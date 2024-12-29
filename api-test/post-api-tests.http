@@ -1,0 +1,31 @@
+###
+GET http://localhost:8082/api/v1/posts/2
+
+###
+DELETE http://localhost:8082/api/v1/posts/2?user-id=11
+
+
+###
+POST http://localhost:8082/api/v1/posts
+Content-Type: application/json
+
+{
+  "title": "hello day...",
+  "content": "About today ....",
+  "userId": 12
+}
+
+<> 2024-12-28T005354.404.json
+
+###
+POST http://localhost:8082/api/v1/posts
+Content-Type: application/json
+
+{
+  "postId": 0,
+  "title": "",
+  "content": "",
+  "userId": 0,
+  "createdAt": "",
+  "updatedAt": ""
+}

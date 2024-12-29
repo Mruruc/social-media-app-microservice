@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: post-service
+
+  datasource:
+    url:
+    username:
+    password:
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      driver-class-name: org.postgresql.Driver
+      auto-commit: true
+      minimum-idle: 5
+      maximum-pool-size: 8
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        hbm2ddl:
+          auto: update
+    open-in-view: false
+
+server:
+  port: 8082
+  servlet:
+    context-path: /api/v1
+
+application:
+  config:
+    client:
+      uri:
+        user-service: http://localhost:8081/api/v1/users

@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: comment-service
+
+  datasource:
+    url:
+    username:
+    password:
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      driver-class-name: org.postgresql.Driver
+      auto-commit: true
+      minimum-idle: 2
+      maximum-pool-size: 3
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        hbm2ddl:
+          auto: update
+    open-in-view: false
+
+
+server:
+  port: 8083
+  servlet:
+    context-path: /api/v1
+
+application:
+  config:
+    client:
+      uri:
+        user-service: http://localhost:8081/api/v1/users
+        post-service: http://localhost:8082/api/v1/posts
