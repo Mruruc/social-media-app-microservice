@@ -3,7 +3,7 @@ spring:
     name: post-service
 
   datasource:
-    url:
+    url: jdbc:postgresql://
     username:
     password:
     driver-class-name: org.postgresql.Driver
@@ -29,8 +29,20 @@ server:
   servlet:
     context-path: /api/v1
 
+
 application:
   config:
     client:
       uri:
-        user-service: http://localhost:8081/api/v1/users
+        user-service: http://user-service/api/v1/users
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}
+    hostname: localhost
+    non-secure-port: ${server.port}
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+    fetch-registry: true
+    register-with-eureka: true

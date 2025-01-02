@@ -3,7 +3,7 @@ spring:
     name: comment-service
 
   datasource:
-    url:
+    url: jdbc:postgresql://
     username:
     password:
     driver-class-name: org.postgresql.Driver
@@ -24,15 +24,27 @@ spring:
           auto: update
     open-in-view: false
 
-
 server:
   port: 8083
   servlet:
     context-path: /api/v1
 
+eureka:
+  instance:
+    instance-id: ${spring.application.name}
+    non-secure-port: ${server.port}
+    hostname: localhost
+  #    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
 application:
   config:
     client:
       uri:
-        user-service: http://localhost:8081/api/v1/users
-        post-service: http://localhost:8082/api/v1/posts
+        user-service: http://user-service/api/v1/users
+        post-service: http://post-service/api/v1/posts
+

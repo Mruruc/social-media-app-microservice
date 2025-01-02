@@ -3,15 +3,15 @@ spring:
     name: user-service
 
   datasource:
-    url:
+    url: jdbc:postgresql://
     username:
     password:
     driver-class-name: org.postgresql.Driver
     hikari:
       driver-class-name: org.postgresql.Driver
       auto-commit: true
-      minimum-idle: 5
-      maximum-pool-size: 8
+      minimum-idle: 1
+      maximum-pool-size: 3
 
 
   jpa:
@@ -30,3 +30,13 @@ server:
   servlet:
     context-path: /api/v1
 
+eureka:
+  instance:
+    instance-id: ${spring.application.name}
+    hostname: localhost
+    non-secure-port: ${server.port}
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+    fetch-registry: true
+    register-with-eureka: true
