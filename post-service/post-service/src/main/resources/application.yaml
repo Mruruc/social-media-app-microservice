@@ -10,8 +10,8 @@ spring:
     hikari:
       driver-class-name: org.postgresql.Driver
       auto-commit: true
-      minimum-idle: 5
-      maximum-pool-size: 8
+      minimum-idle: 1
+      maximum-pool-size: 2
 
   jpa:
     database: postgresql

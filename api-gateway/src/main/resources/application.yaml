@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/users/**
+
+        - id: post-service
+          uri: lb://post-service
+          predicates:
+            - Path=/api/v1/posts/**
+
+        - id: comment-service
+          uri: lb://comment-service
+          predicates:
+            - Path=/api/v1/comments/**
+
+      predicate:
+        after:
+          enabled: false
+        before:
+          enabled: false
+        between:
+          enabled: false
+        cookie:
+          enabled: false
+        header:
+          enabled: false
+        path:
+          enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+    fetch-registry: true
+    register-with-eureka: false
+
+
+server:
+  port: 8080

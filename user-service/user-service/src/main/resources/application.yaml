@@ -11,7 +11,7 @@ spring:
       driver-class-name: org.postgresql.Driver
       auto-commit: true
       minimum-idle: 1
-      maximum-pool-size: 3
+      maximum-pool-size: 2
 
 
   jpa:
